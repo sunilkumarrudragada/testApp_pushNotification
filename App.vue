@@ -5,34 +5,46 @@
       <text> send notification </text>
     </touchable-opacity>
     <text>{{ count }}</text>
-     <button
+    <button
         :on-press="increment"
         title="increment"
         color="#841584"
         accessibility-label="press button to increment"
     />
-      <button
-        :on-press="decrement"
-        title="decrement"
-        color="red"
-        accessibility-label="press button to decrement"
+    <button
+      :on-press="decrement"
+      title="decrement"
+      color="red"
+      accessibility-label="press button to decrement"
     />
     <push-controller/>
+    <view v-if="albums && albums.length">
+      <text v-for="album in albums">
+        {{album.node.title}}
+      </text>
+    </view>
   </view>
 </template>
 
 <script>
 import PushController from './pushController';
 import PushNotification from 'react-native-push-notification';
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex';
 
 export default {
+
+  created: function() {
+    this.$store.dispatch('fetchNirvanaAlbumSingles');
+  },
   components: {
-    PushController
+    PushController,
   },
   computed: {
     ...mapState([
-      'count'
+      'count',
+      'loading',
+      'error',
+      'albums'
     ]),
   },
   methods: {
