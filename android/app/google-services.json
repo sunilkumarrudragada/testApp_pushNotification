@@ -1,3 +1,40 @@
 {
-  "GetItFromGoogle": "will get this file after setup your project in firbase"
+  "project_info": {
+    "project_number": "328966797239",
+    "firebase_url": "https://push-notifications-c1773.firebaseio.com",
+    "project_id": "push-notifications-c1773",
+    "storage_bucket": "push-notifications-c1773.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328966797239:android:223a93bc96073fdb1fda32",
+        "android_client_info": {
+          "package_name": "com.testapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328966797239-2ru0ftljk0qjqtpgki7kmirjqhh4dmsk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsVBdvuR3Vc0qBmy5k9QnP4Eh_j-uqvys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328966797239-2ru0ftljk0qjqtpgki7kmirjqhh4dmsk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 }

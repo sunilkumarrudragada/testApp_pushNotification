@@ -1,70 +1,45 @@
 <template>
-  <view class="container">
-    <text class="text-color-primary">going prepare code for push notifications</text>
-    <touchable-opacity :on-press="onPressButton">
-      <text> send notification </text>
-    </touchable-opacity>
-    <text>{{ count }}</text>
-    <button
-        :on-press="increment"
-        title="increment"
-        color="#841584"
-        accessibility-label="press button to increment"
-    />
-    <button
-      :on-press="decrement"
-      title="decrement"
-      color="red"
-      accessibility-label="press button to decrement"
-    />
+  <app-navigator>
     <push-controller/>
-    <view v-if="albums && albums.length">
-      <text v-for="album in albums">
-        {{album.node.title}}
-      </text>
-    </view>
-  </view>
+  </app-navigator>
 </template>
 
 <script>
+import {
+  createAppContainer,
+  createStackNavigator,
+} from "vue-native-router";
+
+import HomeScreen from "./src/screens/HomeScreen.vue";
+import DetailsScreen from "./src/screens/DetailsScreen.vue";
 import PushController from './pushController';
-import PushNotification from 'react-native-push-notification';
-import { mapState, mapMutations } from 'vuex';
+
+const StackNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+      title: 'Home',
+      navigationOptions: {
+       header: null,
+      },
+    },
+    Details: DetailsScreen,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+const AppNavigator = createAppContainer(StackNavigator);
 
 export default {
-
-  created: function() {
-    this.$store.dispatch('fetchNirvanaAlbumSingles');
-  },
-  components: {
-    PushController,
-  },
-  computed: {
-    ...mapState([
-      'count',
-      'loading',
-      'error',
-      'albums'
-    ]),
-  },
-  methods: {
-    onPressButton: () => {
-      PushNotification.localNotificationSchedule({
-        message: "My Notification Message",
-        date: new Date(Date.now()),
-      });
-    },
-     ...mapMutations([
-      'increment',
-      'decrement'
-    ])
-  }
+  components: { AppNavigator, PushController, },
 }
 </script>
 
 <style>
 .container {
-  background-color: white;
+  background-color: black;
   align-items: center;
   justify-content: center;
   flex: 1;
