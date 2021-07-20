@@ -13,7 +13,7 @@
     "apollo-link-http": "^1.5.16",
     "graphql": "^14.5.8",
     "react": "16.8.3",
-    "react-native": "0.59",
+    "react-native": "0.62",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-paper": "^2.16.0",
     "react-native-push-notification": "^3.1.9",
